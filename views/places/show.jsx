@@ -6,12 +6,16 @@ function show (data) {
         <Def>
           <main>
             <div className='card mt-5' >
-                <img className='card-img-top' src={data.place.pic} alt='Thai Restaurant' />
+                <img className='card-img-top mx-auto d-block' src={data.place.pic} alt='Thai Restaurant' />
                 <div className='card-body'>
                     <h5 className='card-title'>{data.place.name} 
                         <br/>
                         Located in {data.place.city}, {data.place.state} 
                     </h5>
+                    <h2>Description</h2>
+                    <h3>{data.place.showEstablished()}</h3>
+                    <br></br>
+                    <h4>Serving {data.place.cuisines}</h4>
                     <hr></hr>
                     <h6 className='card-title'>Ratings</h6>
                     <p className='card-text'>No Ratings Yet!</p>
