@@ -45,7 +45,7 @@ function show (data) {
                     <form action={`/places/${data.place.id}/comment`} method='POST'>
                         <div className='row'>
                           <div className='form-group col-sm-12'>
-                            <label htmlFor="content">Content</label>
+                            <label htmlFor="content">Write your comment here!</label>
                             <textarea name="content" id="content" className='form-control'></textarea>
                           </div>
                         </div>
@@ -60,10 +60,10 @@ function show (data) {
                           </div>
                           <div className='form-group col-sm-2'>
                             <label htmlFor="rant">Rant?</label>
-                            <input type="checkbox" id='rant' name='rant' className='form-control' />
+                            <input type="checkbox" id='rant' name='rant'  />
                           </div>
                         </div>
-                      <input type="submit" name="btn btn-primary" value="Add Comment!" />
+                      <input type="submit" className='btn btn-primary' value="Add Comment!" />
                     </form>
                     <a href={`/places/${data.id}/edit`} className='btn btn-warning'>Edit</a>
                     <form method='POST' action={`/places/${data.id}?_method=DELETE`}>

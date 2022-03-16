@@ -62,7 +62,25 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.post('/:id/comment', (req, res) => {
-  res.redirect('places/:id')
+  console.log(req.body)
+  db.Place.findById(req.params.id)
+  .then(place => {
+      console.log('imhere!')
+      db.Comment.create(req.body)
+      .then(comment => {
+          place.comments.push(comment.id)
+          place.save()
+          .then(() => {
+              res.redirect(`/places/${req.params.id}`)
+          })
+      })
+      .catch(err => {
+          res.render('error404')
+      })
+  })
+  .catch(err => {
+      res.render('error404')
+  })
 })
 
 router.delete('/:id/rant/:rantId', (req, res) => {
