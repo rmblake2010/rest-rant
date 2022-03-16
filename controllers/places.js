@@ -26,9 +26,21 @@ router.get('/new', (req, res) => {
   res.render('places/new')
 })
 
+
+/*
+//Comment Page
+router.get('/:id/comment', (req, res) => {
+  res.render('places/newComment')
+})
+*/
+
+
+//Show
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
+  .populate('comments')
   .then(place => {
+      console.log(place.comments)
       res.render('places/show', { place })
   })
   .catch(err => {
@@ -49,8 +61,8 @@ router.get('/:id/edit', (req, res) => {
   res.send('GET edit form stub')
 })
 
-router.post('/:id/rant', (req, res) => {
-  res.send('GET /places/:id/rant stub')
+router.post('/:id/comment', (req, res) => {
+  res.redirect('places/:id')
 })
 
 router.delete('/:id/rant/:rantId', (req, res) => {
